@@ -4,8 +4,10 @@ import {
   Route,
   Link,
   Outlet,
-  NavLink,
+  // NavLink,
   useParams,
+  useNavigate,
+  // Navigate
 } from 'react-router-dom';
 import './App.css';
 
@@ -19,6 +21,7 @@ function App() {
             <Route path='product' element={<Product />}>
               <Route path=':id' element={<ProductDetail />}></Route>
             </Route>
+            <Route path='*' element={<NoMatch />}></Route>
           </Route>
         </Routes>
       </Router>
@@ -59,12 +62,18 @@ function Product(params) {
 }
 function ProductDetail() {
   const params = useParams();
+  const navigate = useNavigate();
   console.log(params);
   return (
     <>
       <div>商品详情 - id: {params.id}</div>
+      {/* 命令跳转方式 */}
+      <button onClick={() => navigate('/')}>go Home</button>
     </>
   );
 }
 
+function NoMatch(params) {
+  return <div>No found</div>;
+}
 export default App;
