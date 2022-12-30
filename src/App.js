@@ -8,8 +8,10 @@
 //   useParams,
 //   useNavigate,
 //   // Navigate
+//   // createBrowserRouter
+//   // createHashRouter
 // } from 'react-router-dom';
-import { BrowserRouter, Routes, Route } from './mini-react-router';
+import { BrowserRouter, Routes, Route, Link } from './mini-react-router';
 import './App.css';
 
 function App() {
@@ -25,7 +27,7 @@ function App() {
             </Route>
             {/* <Route path='*' element={<NoMatch />}></Route> */}
           </Route>
-          <Route path='product' element={<Product />}/>
+          <Route path='product' element={<Product />} />
         </Routes>
       </BrowserRouter>
     </div>
@@ -36,9 +38,9 @@ function Layout(params) {
   return (
     <div>
       <h1>Layout</h1>
-      {/* <Link to='/'> 首页</Link>
+      <Link to='/'> 首页</Link>
       <Link to='/product'> 商品中心</Link>
-      <Outlet /> */}
+      {/* <Outlet /> */}
     </div>
   );
 }
