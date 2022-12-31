@@ -89,3 +89,9 @@ export function useOutlet() {
   const { outlet } = useContext(RouteContext);
   return outlet;
 }
+
+export function useParams() {
+  const { matches } = useContext(RouteContext);
+  const routeMatch = matches[matches.length - 1];
+  return routeMatch ? routeMatch.params : {};
+}

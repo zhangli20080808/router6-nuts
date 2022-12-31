@@ -4,4 +4,15 @@ import Route from './Route';
 import Link from './Link';
 import Outlet from './Outlet';
 
-export { BrowserRouter, Routes, Route, Link, Outlet };
+import { useNavigate, useLocation, useParams } from './hooks';
+
+export {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  Outlet,
+  useNavigate,
+  useLocation,
+  useParams,
+};
