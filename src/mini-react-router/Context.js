@@ -1,3 +1,4 @@
 import React from 'react';
 const NavigateContext = React.createContext();
-export { NavigateContext };
+const RouteContext = React.createContext();
+export { NavigateContext, RouteContext };

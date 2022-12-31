@@ -20,3 +20,7 @@ export function createRoutesFromChildren(children) {
 
   return routes;
 }
+
+// 如 ///product/detail/// -> /product/detail
+export const normalizePathname = (pathname) =>
+  pathname.replace(/\/+$/, '').replace(/^\/*/, '/');

@@ -16,6 +16,7 @@ import {
   Routes,
   Route,
   Link,
+  Outlet
 } from './mini-react-router';
 import './App.css';
 
@@ -45,7 +46,7 @@ function Layout(params) {
       <h1>Layout</h1>
       <Link to='/'> 首页</Link>
       <Link to='/product'> 商品中心</Link>
-      {/* <Outlet /> */}
+      <Outlet />
     </div>
   );
 }
