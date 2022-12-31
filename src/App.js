@@ -33,7 +33,7 @@ function App() {
             </Route>
             {/* <Route path='*' element={<NoMatch />}></Route> */}
           </Route>
-          <Route path='product' element={<Product />} />
+          {/* <Route path='product' element={<Product />} /> */}
         </Routes>
       </BrowserRouter>
     </div>
