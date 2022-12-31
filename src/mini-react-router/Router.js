@@ -5,7 +5,7 @@ import { NavigateContext } from './Context';
 export default function Router({ navigator, location, children }) {
   const navigateContext = useMemo(() => {
     return { navigator, location };
-  }, [navigator]);
+  }, [navigator, location]);
   return (
     <NavigateContext.Provider value={navigateContext}>
       {children}
