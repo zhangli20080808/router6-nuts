@@ -11,7 +11,12 @@
 //   // createBrowserRouter
 //   // createHashRouter
 // } from 'react-router-dom';
-import { BrowserRouter, Routes, Route, Link } from './mini-react-router';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+} from './mini-react-router';
 import './App.css';
 
 function App() {
@@ -21,13 +26,13 @@ function App() {
         <Routes>
           <Route path='/' element={<Layout />}>
             {/* Route 的 index 属性就是用来展示默认子路由的 */}
-            <Route index element={<Home />}></Route>
+            <Route path='/' element={<Home />}></Route>
             <Route path='product' element={<Product />}>
               {/* <Route path=':id' element={<ProductDetail />}></Route> */}
             </Route>
             {/* <Route path='*' element={<NoMatch />}></Route> */}
           </Route>
-          <Route path='product' element={<Product />} />
+          {/* <Route path='product' element={<Product />} /> */}
         </Routes>
       </BrowserRouter>
     </div>

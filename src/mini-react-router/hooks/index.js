@@ -12,6 +12,7 @@ export function useRoutes(routes) {
   return routes.map((route) => {
     // const match = pathname === route.path || pathname === '/' + route.path;
     const match = pathname.startsWith(route.path);
+    console.log(pathname, route, 'route');
     // TODO 子路由后续处理 children
     return match ? route.element : null;
   });
@@ -25,3 +26,14 @@ export function useNavigate() {
   const { navigator } = useContext(NavigateContext);
   return navigator.push;
 }
+
+export function useLocation() {
+  const { location } = useContext(NavigateContext);
+  return location;
+}
+
+/**
+ * 渲染父路由的子路由，渲染children
+ * @returns
+ */
+export function useOutlet() {}
