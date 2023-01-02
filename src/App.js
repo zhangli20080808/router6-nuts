@@ -1,3 +1,4 @@
+import React, { lazy, Suspense } from 'react';
 // import {
 //   BrowserRouter,
 //   Routes,
@@ -22,7 +23,9 @@ import {
 } from './mini-react-router';
 import './App.css';
 import { AuthProvider, useAuth } from './mini-react-router/auth';
+// import About from './pages/About'
 
+const About = lazy(() => import('./pages/About'));
 function App() {
   return (
     <div className='App'>
@@ -44,6 +47,14 @@ function App() {
                 }
               />
               <Route path='login' element={<Login />} />
+              <Route
+                path='about'
+                element={
+                  <Suspense fallback={<div>loading...</div>}>
+                    <About />
+                  </Suspense>
+                }
+              />
               <Route path='*' element={<NoMatch />}></Route>
             </Route>
           </Routes>
@@ -61,6 +72,7 @@ function Layout() {
       <Link to='/product'> 商品中心</Link>
       <Link to='/user'> 用户中心</Link>
       <Link to='/login'> 登录</Link>
+      <Link to='/about'> 关于</Link>
       <Outlet />
     </div>
   );
