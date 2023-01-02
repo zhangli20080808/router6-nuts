@@ -1,8 +1,8 @@
-import { useContext } from 'react';
+import { useContext, useCallback } from 'react';
 import { matchRoutes } from 'react-router-dom';
 import { NavigateContext, RouteContext } from '../Context';
-import Outlet from '../Outlet';
-import { normalizePathname } from '../utils';
+// import Outlet from '../Outlet';
+// import { normalizePathname } from '../utils';
 /**
  * 可以将数组对象形式的路由，直接在页面上使用, 渲染哪个路由
  * @param {*} routes
@@ -72,7 +72,22 @@ function renderMatches(matches) {
  */
 export function useNavigate() {
   const { navigator } = useContext(NavigateContext);
-  return navigator.push;
+
+  const navigate = useCallback(
+    (to, options = {}) => {
+      if (typeof to === 'number') {
+        navigator.go(to);
+        return;
+      }
+      (!!options.replace ? navigator.replace : navigator.push)(
+        to,
+        options.state
+      );
+    },
+    [navigator]
+  );
+
+  return navigate;
 }
 
 export function useLocation() {

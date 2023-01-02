@@ -1,3 +1,14 @@
+// import {
+//   BrowserRouter,
+//   Routes,
+//   Route,
+//   Link,
+//   Outlet,
+// useNavigate,
+//   useParams,
+// Navigate,
+//   useLocation,
+// } from 'react-router-dom';
 import {
   BrowserRouter,
   Routes,
@@ -6,19 +17,9 @@ import {
   Outlet,
   useNavigate,
   useParams,
-  Navigate,
   useLocation,
-} from 'react-router-dom';
-// import {
-//   BrowserRouter,
-//   Routes,
-//   Route,
-//   Link,
-//   Outlet,
-//   useNavigate,
-//   useParams,
-//   useLocation
-// } from './mini-react-router';
+  Navigate,
+} from './mini-react-router';
 import './App.css';
 import { AuthProvider, useAuth } from './mini-react-router/auth';
 
@@ -110,14 +111,14 @@ function RequiredAuth({ children }) {
 function User() {
   const auth = useAuth();
   const navigate = useNavigate();
-  console.log(auth,'auth');
+  console.log(auth, 'auth');
   return (
     <div>
       <h1>User</h1>
       <p>{auth.user?.username}</p>
       <button
         onClick={() => {
-          auth.signout(() => navigate("/login"));
+          auth.signout(() => navigate('/login'));
         }}
       >
         退出登录

@@ -19,7 +19,7 @@ export default function BrowserRouter({ children }) {
   // 涉及到组件更新，如果延迟，有些组件的更新可能会出问题
   useLayoutEffect(() => {
     history.listen(setState);
-  }, []);
+  }, [history]);
 
   return (
     <Router children={children} navigator={history} location={state.location} />
