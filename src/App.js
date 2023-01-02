@@ -1,15 +1,4 @@
 import React, { lazy, Suspense } from 'react';
-// import {
-//   BrowserRouter,
-//   Routes,
-//   Route,
-//   Link,
-//   Outlet,
-// useNavigate,
-//   useParams,
-// Navigate,
-//   useLocation,
-// } from 'react-router-dom';
 import {
   BrowserRouter,
   Routes,
@@ -18,9 +7,25 @@ import {
   Outlet,
   useNavigate,
   useParams,
-  useLocation,
   Navigate,
-} from './mini-react-router';
+  useLocation,
+  NavLink,
+  useMatch,
+  useResolvedPath,
+} from 'react-router-dom';
+// import {
+//   BrowserRouter,
+//   Routes,
+//   Route,
+//   Link,
+//   Outlet,
+//   useNavigate,
+//   useParams,
+//   useLocation,
+//   Navigate,
+//     useMatch,
+//   useResolvedPath,
+// } from './mini-react-router';
 import './App.css';
 import { AuthProvider, useAuth } from './mini-react-router/auth';
 // import About from './pages/About'
@@ -64,15 +69,30 @@ function App() {
   );
 }
 
+function CustomLink({ to, ...rest }) {
+  const resolved = useResolvedPath(to);
+  console.log('to', to, resolved);
+  const match = useMatch({ path: resolved.pathname, end: true });
+  return <Link to={to} {...rest} style={{ color: match ? 'red' : 'black' }} />;
+
+  // return (
+  //   <NavLink
+  //     to={to}
+  //     {...rest}
+  //     style={({ isActive }) => ({ color: isActive ? 'red' : 'black' })}
+  //   />
+  // );
+}
+
 function Layout() {
   return (
     <div>
       <h1>Layout</h1>
-      <Link to='/'> 首页</Link>
-      <Link to='/product'> 商品中心</Link>
-      <Link to='/user'> 用户中心</Link>
-      <Link to='/login'> 登录</Link>
-      <Link to='/about'> 关于</Link>
+      <CustomLink to='/'> 首页</CustomLink>
+      <CustomLink to='/product'> 商品中心</CustomLink>
+      <CustomLink to='/user'> 用户中心</CustomLink>
+      <CustomLink to='/login'> 登录</CustomLink>
+      <CustomLink to='/about'> 关于</CustomLink>
       <Outlet />
     </div>
   );
@@ -82,9 +102,9 @@ function Home() {
   return (
     <div>
       home
-      {/* <Link to='/'>首页</Link> */}
-      {/* <Link to='/product'>商品</Link> */}
-      {/* <NavLink to='messages'>Message</NavLink> */}
+      {/* <CustomLink to='/'>首页</CustomLink> */}
+      {/* <CustomLink to='/product'>商品</CustomLink> */}
+      {/* <NavCustomLink to='messages'>Message</NavCustomLink> */}
     </div>
   );
 }
@@ -92,7 +112,7 @@ function Product() {
   return (
     <div>
       <h1>product</h1>
-      <Link to='/product/123'>商品详情</Link>
+      <CustomLink to='/product/123'>商品详情</CustomLink>
       {/* 想要显示详情，详情是子路由  添加 Outlet */}
       <Outlet />
     </div>
